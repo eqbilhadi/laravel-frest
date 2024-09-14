@@ -4,10 +4,12 @@ use App\Livewire\Forms\LoginForm;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 
-new #[Layout('components.layouts.auth.base')] class extends Component {
+new #[Layout('components.layouts.auth.base')] #[Title('Login')] class extends Component {
     public LoginForm $form;
+
 
     /**
      * Handle an incoming authentication request.
@@ -41,6 +43,7 @@ new #[Layout('components.layouts.auth.base')] class extends Component {
                 id="email"
                 name="email-username"
                 placeholder="Enter your email or username"
+                autocomplete="username"
                 autofocus
             />
             @error('form.email')
@@ -67,9 +70,10 @@ new #[Layout('components.layouts.auth.base')] class extends Component {
                     name="password"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                     aria-describedby="password"
+                    autocomplete="current-password"
                 />
                 <span class="input-group-text cursor-pointer">
-                    <i class="bx bx-hide"></i>
+                    <i class="fa-solid fa-eye-slash"></i>
                 </span>
             </div>
         </div>

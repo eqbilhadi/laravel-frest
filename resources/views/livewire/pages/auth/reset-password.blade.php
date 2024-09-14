@@ -8,9 +8,10 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
+new #[Layout('components.layouts.auth.base')] #[Title('Reset Password')] class extends Component
 {
     #[Locked]
     public string $token = '';
@@ -70,36 +71,81 @@ new #[Layout('layouts.guest')] class extends Component
 }; ?>
 
 <div>
+    <h4 class="mb-2">Reset Password 🔒</h4>
+    <p class="mb-4">for <span class="fw-bold">{{ $email }}</span></p>
     <form wire:submit="resetPassword">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="mb-3 form-password-toggle">
+            <label class="form-label" for="password">
+                New Password
+            </label>
+            <div class="input-group input-group-merge">
+                <input
+                    wire:model="password"
+                    type="password"
+                    id="password"
+                    class="form-control @error('password') is-invalid @enderror @error('email') is-invalid @enderror"
+                    name="password"
+                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                    aria-describedby="password"
+                />
+                <span class="input-group-text cursor-pointer">
+                    <i class="bx bx-hide"></i>
+                </span>
+            </div>
+            @error('email')
+                <small class="text-danger">
+                    {{ $message }}
+                </small>
+            @enderror
+            @error('password')
+                <small class="text-danger">
+                    {{ $message }}
+                </small>
+            @enderror
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="mb-3 form-password-toggle">
+            <label class="form-label" for="password_confirmation">
+                Confirm Password
+            </label>
+            <div class="input-group input-group-merge">
+                <input
+                    wire:model="password_confirmation"
+                    type="password"
+                    id="password_confirmation"
+                    class="form-control @error('password_confirmation') is-invalid @enderror"
+                    name="password_confirmation"
+                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                    aria-describedby="password"
+                />
+                <span class="input-group-text cursor-pointer">
+                    <i class="bx bx-hide"></i>
+                </span>
+            </div>
+            @error('password_confirmation')
+                <small class="text-danger">
+                    {{ $message }}
+                </small>
+            @enderror
         </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
-                          type="password"
-                          name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
+        <button class="btn btn-primary d-grid w-100 mb-3">
+            <span wire:loading.remove wire:target='resetPassword'>
+                <i class="fa-sharp fa-solid fa-arrows-retweet me-1"></i> 
+                Reset password
+            </span>
+            <span wire:loading wire:target='resetPassword'>
+                <i class="fa-duotone fa-spinner-third fa-spin me-1"></i>
+                Loading
+            </span>
+        </button>
+        <div class="text-center mt-3">
+            <a 
+                href="{{ route('login') }}" 
+                class="d-flex align-items-center justify-content-center" 
+                wire:navigate
+            >
+                <i class="fa-solid fa-chevron-left me-2 fa-xs"></i>
+                Back to login
+            </a>
         </div>
     </form>
 </div>
