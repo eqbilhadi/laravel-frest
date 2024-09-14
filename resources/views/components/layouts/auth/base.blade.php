@@ -1,4 +1,4 @@
-<x-layouts.auth.app>
+<x-layouts.auth.app {{ $attributes->merge(['title' => $title ?? null]) }}>
     <style>
         .login-background {
             background-image: url("{{ asset('assets/images/auth-bg.jpg') }}");
@@ -12,19 +12,7 @@
     </style>
     <div class="authentication-wrapper authentication-cover">
         <div class="authentication-inner row m-0">
-            <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center login-background">
-                <div class="flex-row text-center mx-auto">
-                    <div class="mx-auto">
-                        {{-- <img src="{{ asset('assets/images/vector-auth.jpg') }}" alt="Auth vector" width="430" class="mx-auto mb-3"> --}}
-                        <h3 class="text-white">Discover the powerful admin template 🥳</h3>
-                        <p class="text-white">
-                            Perfectly suited for all level of developers which
-                            helps you to <br />
-                            kick start your next big projects & Applications.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <x-layouts.auth.header />
 
             <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
                 <div class="w-px-400 mx-auto">
