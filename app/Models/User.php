@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Traits\UuidTrait;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,4 +55,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected function avatarUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                if ($this->avatar && file_exists($this->avatar)) {
+                    return asset($this->avatar);
+                }
+        
+                return asset('assets/images/avatars/3.png');
+            }
+        );
+    }
+    
+    protected function fullname(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => trim($this->firstname . ' ' . $this->lastname)
+        );
+    }
 }
