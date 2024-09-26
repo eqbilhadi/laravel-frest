@@ -12,7 +12,7 @@
 <!-- Core CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/core.css') }}" class="template-customizer-core-css" />
 <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" class="template-customizer-theme-css" />
-<link rel="stylesheet" href="{{ asset('assets/css/theme-default.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/theme-semi-dark.css') }}" />
 
 <!-- Vendors CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/libs/perfect-scrollbar.css') }}" />

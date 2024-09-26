@@ -1,10 +1,10 @@
 <!-- / Content -->
 
 <!-- Core JS -->
-<script src="{{ asset('assets/js/libs/jquery.js') }}"></script>
-<script src="{{ asset('assets/js/libs/popper.js') }}"></script>
-<script src="{{ asset('assets/js/libs/bootstrap.js') }}"></script>
-<script src="{{ asset('assets/js/libs/perfect-scrollbar.js') }}"></script>
+<script src="{{ asset('assets/js/libs/jquery.js') }}" data-navigate-once></script>
+<script src="{{ asset('assets/js/libs/popper.js') }}" data-navigate-once></script>
+<script src="{{ asset('assets/js/libs/bootstrap.js') }}" data-navigate-once></script>
+<script src="{{ asset('assets/js/libs/perfect-scrollbar.js') }}" data-navigate-once></script>
 
 <script src="{{ asset('assets/js/libs/hammer.js') }}"></script>
 
