@@ -4,7 +4,7 @@
 
 'use strict';
 
-let isRtl = window.Helpers.isRtl(),
+var isRtl = window.Helpers.isRtl(),
   isDarkStyle = window.Helpers.isDarkStyle(),
   menu,
   animate,
@@ -17,7 +17,8 @@ if (document.getElementById('layout-menu')) {
 (function () {
   // Initialize menu
   //-----------------
-
+  let templateName = 'vertical-menu-template-starter';
+  let assetsPath = window.location.origin + '/assets/';
   let layoutMenuEl = document.querySelectorAll('#layout-menu');
   layoutMenuEl.forEach(function (element) {
     menu = new Menu(element, {
@@ -115,7 +116,6 @@ if (document.getElementById('layout-menu')) {
     }
   } else {
     // Removed style switcher element if not using template customizer
-    styleSwitcherToggleEl.parentElement.remove();
   }
 
   // Update light/dark image based on current style
@@ -143,23 +143,6 @@ if (document.getElementById('layout-menu')) {
   };
   // Internationalization (Language Dropdown)
   // ---------------------------------------
-
-  if (typeof i18next !== 'undefined' && typeof i18NextHttpBackend !== 'undefined') {
-    i18next
-      .use(i18NextHttpBackend)
-      .init({
-        lng: 'en',
-        debug: false,
-        fallbackLng: 'en',
-        backend: {
-          loadPath: assetsPath + 'json/locales/{{lng}}.json'
-        },
-        returnObjects: true
-      })
-      .then(function (t) {
-        localize();
-      });
-  }
 
   let languageDropdown = document.getElementsByClassName('dropdown-language');
 
