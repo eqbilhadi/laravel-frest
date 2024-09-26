@@ -18,11 +18,11 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-        @include('components.layouts.auth.includes.styles')
+        @include('authentication::components.includes.styles')
     </head>
 
     <body>
         {{ $slot }}
-        @include('components.layouts.auth.includes.scripts')
+        @include('authentication::components.includes.styles')
     </body>
 </html>

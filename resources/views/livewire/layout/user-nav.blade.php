@@ -60,7 +60,7 @@ new class extends Component {
             <div class="dropdown-divider"></div>
         </li>
         <li>
-            <a class="dropdown-item" href="{{ route('account') }}" wire:navigate>
+            <a class="dropdown-item" href="{{ route('rbac.account') }}" wire:navigate>
                 <i class="bx bx-user me-2"></i>
                 <span class="align-middle">My Profile</span>
             </a>
