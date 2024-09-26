@@ -85,6 +85,7 @@ new #[Layout('components.layouts.auth.base')] #[Title('Register')] class extends
                 id="username"
                 name="username"
                 placeholder="Enter your username"
+                autocomplete="username"
                 autofocus
             />
             @error('username')
@@ -116,6 +117,7 @@ new #[Layout('components.layouts.auth.base')] #[Title('Register')] class extends
                     name="password"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                     aria-describedby="password"
+                    autocomplete="password"
                 />
                 <span class="input-group-text cursor-pointer"
                     ><i class="bx bx-hide"></i
@@ -136,6 +138,7 @@ new #[Layout('components.layouts.auth.base')] #[Title('Register')] class extends
                     name="password_confirmation"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                     aria-describedby="password"
+                    autocomplete="password-confirmation"
                 />
                 <span class="input-group-text cursor-pointer"
                     ><i class="bx bx-hide"></i

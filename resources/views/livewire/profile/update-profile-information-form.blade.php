@@ -17,7 +17,7 @@ new class extends Component
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
+        $this->name = Auth::user()->fullname;
         $this->email = Auth::user()->email;
     }
 
@@ -41,7 +41,7 @@ new class extends Component
 
         $user->save();
 
-        $this->dispatch('profile-updated', name: $user->name);
+        $this->dispatch('profile-updated', name: $user->fullname);
     }
 
     /**

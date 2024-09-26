@@ -76,6 +76,9 @@ new #[Layout('components.layouts.auth.base')] #[Title('Login')] class extends Co
                     <i class="fa-solid fa-eye-slash"></i>
                 </span>
             </div>
+            @error('form.password')
+                <small class="text-danger">{{ $message }}</small> 
+            @enderror
         </div>
         <div class="mb-3">
             <div class="form-check">
