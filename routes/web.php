@@ -21,8 +21,3 @@ Route::middleware(['auth'])->group(function () {
     Route::view('profile', 'profile')->name('profile');
     Route::view('account', 'account')->name('account');
 });
-
-
-
-
-require __DIR__ . '/auth.php';

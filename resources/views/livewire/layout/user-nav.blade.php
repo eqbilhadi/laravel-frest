@@ -1,13 +1,13 @@
 <?php
 
-use App\Livewire\Actions\Logout;
+use Modules\Authentication\Livewire\Actions\Logout;
 use Livewire\Volt\Component;
 
 new class extends Component {
     /**
      * Log the current user out of the application.
      */
-     public function logout(Logout $logout): void
+    public function logout(Logout $logout): void
     {
         $logout();
 
