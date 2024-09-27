@@ -114,10 +114,10 @@ new class extends Component {
             </div>
             <div class="mb-3 form-password-toggle">
                 <label class="form-label" for="password">Password</label>
-                <div class="input-group input-group-merge">
+                <div class="input-group input-group-merge" x-data="{ show: false }">
                     <input
                         wire:model="password"
-                        type="password"
+                        :type="show ? 'text' : 'password'"
                         id="password"
                         class="form-control @error('password') is-invalid @enderror"
                         name="password"
@@ -125,9 +125,9 @@ new class extends Component {
                         aria-describedby="password"
                         autocomplete="password"
                     />
-                    <span class="input-group-text cursor-pointer"
-                        ><i class="bx bx-hide"></i
-                    ></span>
+                    <span class="input-group-text cursor-pointer" @click="show = !show">
+                        <i :class="show ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+                    </span>
                 </div>
                 @error('password')
                     <small class="text-danger">{{ $message }}</small> 
@@ -135,10 +135,10 @@ new class extends Component {
             </div>
             <div class="mb-3">
                 <label for="password_confirmation" class="form-label">Confirm Password</label>
-                <div class="input-group input-group-merge">
+                <div class="input-group input-group-merge" x-data="{ show: false }">
                     <input
                         wire:model="password_confirmation"
-                        type="password"
+                        :type="show ? 'text' : 'password'"
                         id="password_confirmation"
                         class="form-control @error('password_confirmation') is-invalid @enderror"
                         name="password_confirmation"
@@ -146,9 +146,9 @@ new class extends Component {
                         aria-describedby="password"
                         autocomplete="password-confirmation"
                     />
-                    <span class="input-group-text cursor-pointer"
-                        ><i class="bx bx-hide"></i
-                    ></span>
+                    <span class="input-group-text cursor-pointer" @click="show = !show">
+                        <i :class="show ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+                    </span>
                 </div>
                 @error('password_confirmation')
                     <small class="text-danger">{{ $message }}</small> 

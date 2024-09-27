@@ -64,10 +64,10 @@ new class extends Component {
                             </a>
                         @endif
                     </div>
-                    <div class="input-group input-group-merge">
+                    <div class="input-group input-group-merge" x-data="{ show: false }">
                         <input
                             wire:model="form.password"
-                            type="password"
+                            :type="show ? 'text' : 'password'"
                             id="password"
                             class="form-control @error('form.password') is-invalid @enderror"
                             name="password"
@@ -75,8 +75,8 @@ new class extends Component {
                             aria-describedby="password"
                             autocomplete="current-password"
                         />
-                        <span class="input-group-text cursor-pointer">
-                            <i class="fa-solid fa-eye-slash"></i>
+                        <span class="input-group-text cursor-pointer" @click="show = !show">
+                            <i :class="show ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
                         </span>
                     </div>
                     @error('form.password')

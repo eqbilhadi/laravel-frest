@@ -80,18 +80,18 @@ new class extends Component
                     <label class="form-label" for="password">
                         New Password
                     </label>
-                    <div class="input-group input-group-merge">
+                    <div class="input-group input-group-merge" x-data="{ show: false }">
                         <input
                             wire:model="password"
-                            type="password"
+                            :type="show ? 'text' : 'password'"
                             id="password"
                             class="form-control @error('password') is-invalid @enderror @error('email') is-invalid @enderror"
                             name="password"
                             placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                             aria-describedby="password"
                         />
-                        <span class="input-group-text cursor-pointer">
-                            <i class="bx bx-hide"></i>
+                        <span class="input-group-text cursor-pointer" @click="show = !show">
+                            <i :class="show ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
                         </span>
                     </div>
                     @error('email')
@@ -109,18 +109,18 @@ new class extends Component
                     <label class="form-label" for="password_confirmation">
                         Confirm Password
                     </label>
-                    <div class="input-group input-group-merge">
+                    <div class="input-group input-group-merge" x-data="{ show: false }">
                         <input
                             wire:model="password_confirmation"
-                            type="password"
+                            :type="show ? 'text' : 'password'"
                             id="password_confirmation"
                             class="form-control @error('password_confirmation') is-invalid @enderror"
                             name="password_confirmation"
                             placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                             aria-describedby="password"
                         />
-                        <span class="input-group-text cursor-pointer">
-                            <i class="bx bx-hide"></i>
+                        <span class="input-group-text cursor-pointer" @click="show = !show">
+                            <i :class="show ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
                         </span>
                     </div>
                     @error('password_confirmation')
