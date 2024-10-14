@@ -10,10 +10,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Str;
 class ComUser extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, UuidTrait;
+    use HasApiTokens, HasFactory, Notifiable, UuidTrait, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -73,6 +74,13 @@ class ComUser extends Authenticatable
     {
         return Attribute::make(
             get: fn() => trim($this->firstname . ' ' . $this->lastname)
+        );
+    }
+
+    protected function mainRole(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => Str::ucfirst($this->roles()->first()->name)
         );
     }
 }
