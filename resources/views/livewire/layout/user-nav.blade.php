@@ -51,7 +51,7 @@ new class extends Component {
                     </div>
                     <div class="flex-grow-1">
                         <span class="fw-semibold d-block lh-1" x-text="name"></span>
-                        <small>Admin</small>
+                        <small>{{ auth()->user()->main_role }}</small>
                     </div>
                 </div>
             </a>

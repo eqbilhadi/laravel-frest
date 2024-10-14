@@ -1,4 +1,4 @@
-<x-layouts.app.base>
+<x-layouts.app.base title="Account">
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="col-xl-12">
             <div class="nav-align-top mb-4">
