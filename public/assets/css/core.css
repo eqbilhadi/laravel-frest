@@ -17674,7 +17674,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   flex: none;
 }
 .menu-vertical .menu-sub .menu-link {
-  padding-left: 2.938rem;
+  padding-left: 2rem;
 }
 [dir=rtl] .menu-vertical .menu-sub .menu-link {
   padding-right: 2.938rem;
@@ -18428,10 +18428,18 @@ html:not([dir=rtl]) .menu-horizontal .menu-sub .menu-sub .menu-item .menu-link {
   display: block;
 }
 .layout-menu-toggle .menu-toggle-icon:before {
-  content: "\eaa3";
+  font-family: 'Font Awesome 6 Pro';
+  content: "\f2f8";
+  font-style: normal;
+  font-size: 0.9em;
+  display: none;
 }
 .layout-menu-collapsed .layout-menu-toggle .menu-toggle-icon:before {
-  content: "\ea5c";
+  font-family: 'Font Awesome 6 Pro';
+  content: "\f111";
+  font-style: normal;
+  font-size: 0.9em;
+  display: none;
 }
 
 @media (min-width: 1200px) {

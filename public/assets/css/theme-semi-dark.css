@@ -39,7 +39,7 @@
   }
 }
 .bg-menu-theme .menu-sub > .menu-item > .menu-link:before {
-  content: "";
+  content: none;
   position: absolute;
   left: 1.4375rem;
   width: 0.375rem;
@@ -1273,12 +1273,12 @@ li.ui-timepicker-selected,
 
 .bg-menu-theme {
   background-color: #182535 !important;
-  color: #bec5cc;
+  color: #ffffff;
 }
 .bg-menu-theme .menu-link,
 .bg-menu-theme .menu-horizontal-prev,
 .bg-menu-theme .menu-horizontal-next {
-  color: #bec5cc;
+  color: #ffffff;
 }
 .bg-menu-theme .menu-link.active,
 .bg-menu-theme .menu-horizontal-prev.active,
@@ -1304,7 +1304,7 @@ li.ui-timepicker-selected,
 .bg-menu-theme .menu-inner > .menu-item.menu-item-closing .menu-item.open .menu-sub,
 .bg-menu-theme .menu-inner > .menu-item.menu-item-closing .menu-item.open .menu-toggle {
   background: transparent;
-  color: #bec5cc;
+  color: #ffffff;
 }
 .bg-menu-theme .menu-inner-shadow {
   background: linear-gradient(#182535 41%, rgba(24, 37, 53, 0.11) 95%, rgba(24, 37, 53, 0));
@@ -1365,7 +1365,7 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner > .menu-item.open:no
   color: #fff;
 }
 .bg-menu-theme .menu-sub > .menu-item > .menu-link:before {
-  background-color: #bec5cc !important;
+  background-color: #ffffff !important;
 }
 .bg-menu-theme .menu-sub > .menu-item.active > .menu-link:not(.menu-toggle):before {
   background-color: #fff !important;

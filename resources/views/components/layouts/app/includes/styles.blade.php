@@ -30,22 +30,3 @@
 
 <!-- Helpers -->
 <script src="{{ asset('assets/js/helpers.js') }}"></script>
-
-<style>
-    .bg-menu-theme .menu-sub>.menu-item>.menu-link:before {
-        content: none;
-        position: absolute;
-        left: 1.4375rem;
-        width: 0.375rem;
-        height: 0.375rem;
-        border-radius: 50%;
-    }
-
-    .menu-vertical .menu-sub .menu-link {
-        padding-left: 2rem;
-    }
-
-    .bg-menu-theme .menu-link {
-        color: #ffffff;
-    }
-</style>
