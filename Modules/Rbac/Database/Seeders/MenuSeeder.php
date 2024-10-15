@@ -3,6 +3,7 @@
 namespace Modules\Rbac\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Rbac\App\Jobs\ForgetCacheMenu;
 use Modules\Rbac\App\Models\ComMenu;
 use Modules\Rbac\App\Models\ComRole;
 
@@ -45,6 +46,16 @@ class MenuSeeder extends Seeder
             'sort_num' => '1',
         ]);
 
+        $permissionManagement = ComMenu::firstOrCreate([
+            'parent_id' => $accessSettingMenu->id,
+            'icon' => 'fa-solid fa-key',
+            'label_name' => 'Permission Management',
+            'controller_name' => 'Modules\Rbac\app\Http\Controllers\PermissionManagementController',
+            'route_name' => 'rbac.permission.index',
+            'url' => 'rbac/permission-management',
+            'sort_num' => '2',
+        ]);
+
         $roleManagement = ComMenu::firstOrCreate([
             'parent_id' => $accessSettingMenu->id,
             'icon' => 'fa-sharp fa-solid fa-shield-keyhole',
@@ -52,7 +63,7 @@ class MenuSeeder extends Seeder
             'controller_name' => 'Modules\Rbac\app\Http\Controllers\RoleManagementController',
             'route_name' => 'rbac.role.index',
             'url' => 'rbac/role-management',
-            'sort_num' => '2',
+            'sort_num' => '3',
         ]);
 
         $userManagement = ComMenu::firstOrCreate([
@@ -62,15 +73,18 @@ class MenuSeeder extends Seeder
             'controller_name' => 'Modules\Rbac\app\Http\Controllers\UserManagementController',
             'route_name' => 'rbac.user.index',
             'url' => 'rbac/user-management',
-            'sort_num' => '3',
+            'sort_num' => '4',
         ]);
 
         $developer->menus()->sync([
             $homeMenu->id,
             $accessSettingMenu->id,
             $menuManagement->id,
+            $permissionManagement->id,
             $roleManagement->id,
             $userManagement->id,
         ]);
+
+        dispatch(new ForgetCacheMenu());
     }
 }
