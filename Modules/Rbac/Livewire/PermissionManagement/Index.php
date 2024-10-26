@@ -6,11 +6,17 @@ use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 use Modules\Rbac\App\Models\ComPermission;
 use Modules\Rbac\Services\Registration\Permission\PermissionDestroy;
 
 class Index extends Component
 {
+    use WithPagination, WithoutUrlPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
     #[Computed]
     public function permissionLists()
     {

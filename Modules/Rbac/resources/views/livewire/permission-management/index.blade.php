@@ -20,9 +20,10 @@
             </div>
         </div>
         <div class="table-responsive text-nowrap">
-            <table class="table table-striped border-top">
+            <table class="table table-striped border-top table-sm">
                 <thead class="table-dark">
                     <tr>
+                        <th class="text-center" style="width: 3%;">No</th>
                         <th>Permissions Name</th>
                         <th>Assigned To</th>
                         <th class="text-end">Actions</th>
@@ -31,10 +32,20 @@
                 <tbody class="table-border-bottom-0">
                     @forelse ($permissions as $permission)
                         <tr wire:key="permission-{{ $permission->id }}">
-                            <td class="fw-semibold">{{ $permission->name }}</td>
+                            <td class="text-center">
+                                {{ $permissions->firstItem() + $loop->index }}
+                            </td>
+                            <td class="fw-semibold">
+                                {{ $permission->name }}
+                            </td>
                             <td>
                                 @foreach ($permission->roles as $role)
-                                    <span class="badge bg-primary m-1">{{ $role->name }}</span>
+                                    <span class="badge m-1" style="background-color: {{ $role->color }};">
+                                        @if ($role->icon != null)
+                                            <i class="{{ $role->icon }}"></i>
+                                        @endif
+                                        {{ $role->name }}
+                                    </span>
                                 @endforeach
                             </td>
                             <td class="text-end">
@@ -68,6 +79,7 @@
                 </tbody>
             </table>
         </div>
+        {{ $permissions->links() }}
     </div>
     <livewire:rbac::permission-management.modal-form />
     <x-confirm-delete-modal />
