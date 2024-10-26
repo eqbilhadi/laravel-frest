@@ -17,6 +17,7 @@
 <!-- Vendors CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/libs/perfect-scrollbar.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/libs/typeahead.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/libs/select2.css') }}" />
 
 <!-- Page CSS -->
 @stack('styles')

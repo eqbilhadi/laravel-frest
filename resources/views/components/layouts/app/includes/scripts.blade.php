@@ -11,6 +11,8 @@
 
 <script src="{{ asset('assets/js/libs/menu.js') }}"></script>
 
+<script src="{{ asset('assets/js/libs/select2.js') }}"></script>
+
 <!-- Main JS -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
 

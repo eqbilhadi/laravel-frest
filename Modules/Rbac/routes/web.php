@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Rbac\App\Http\Controllers\NavigationManagementController;
+use Modules\Rbac\App\Http\Controllers\PermissionManagementController;
 use Modules\Rbac\App\Http\Controllers\RoleManagementController;
 use Modules\Rbac\App\Http\Controllers\UserManagementController;
 
@@ -28,6 +29,15 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'rbac', 'as' => 'rbac.'], fu
         Route::get('/', [NavigationManagementController::class, 'index'])->name('index');
         Route::get('create', [NavigationManagementController::class, 'create'])->name('create');
         Route::get('edit/{comMenu}', [NavigationManagementController::class, 'edit'])->name('edit');
+    });
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Permission Management
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['prefix' => 'permission-management', 'as' => 'permission.'], function () {
+        Route::get('/', [PermissionManagementController::class, 'index'])->name('index');
     });
     
     /*
