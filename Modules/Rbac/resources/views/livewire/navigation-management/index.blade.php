@@ -27,11 +27,17 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach ($navs as $nav)
+                    @forelse ($navs as $nav)
                         <x-rbac::menu-item :menu="$nav" :$loop />
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="100%" class="text-center">Data Not Found</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
     </div>
+    
+    <x-confirm-delete-modal />
 </div>

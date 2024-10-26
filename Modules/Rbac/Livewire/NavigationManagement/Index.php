@@ -2,10 +2,12 @@
 
 namespace Modules\Rbac\Livewire\NavigationManagement;
 
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Modules\Rbac\App\Jobs\ForgetCacheMenu;
 use Modules\Rbac\App\Models\ComMenu;
+use Modules\Rbac\Services\Registration\Navigation\NavigationDestroy;
 
 class Index extends Component
 {
@@ -29,6 +31,20 @@ class Index extends Component
     {
         ComMenu::updateStatus($navId);
         dispatch(new ForgetCacheMenu());
+    }
+
+    public function delete($id)
+    {
+        try {
+            (new NavigationDestroy($id))->handle();
+            dispatch(new ForgetCacheMenu());
+
+            $this->dispatch('close-modal-delete');
+            toastr()->closeButton(true)->addSuccess('Deleted navigation successfully');
+        } catch (\Throwable $err) {
+            toastr()->closeButton(true)->addError('Something went wrong, try again later!');
+            Log::info($err->getMessage());
+        }
     }
 
     public function render()

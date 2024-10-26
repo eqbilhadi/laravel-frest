@@ -34,7 +34,7 @@
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
             <i class="bx menu-toggle-icon d-none d-xl-block fs-4 align-middle"></i>
-            <i class="bx bx-x d-block d-xl-none bx-sm align-middle"></i>
+            <i class="fa-solid fa-xmark d-block d-xl-none bx-sm align-middle"></i>
         </a>
     </div>
 

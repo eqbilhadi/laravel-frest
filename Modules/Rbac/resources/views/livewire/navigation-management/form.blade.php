@@ -27,7 +27,7 @@
         <div
             class="card-body border-top"
             x-data="{ isDisabledDivider: !($wire.form.parent_id == '') }"
-            x-effect="if (isDisabledDivider) { $wire.form.is_divider = '0' } else { $wire.form.is_divider = '0' }"
+            x-effect="if (isDisabledDivider) { $wire.form.is_divider = '0' } else { $wire.form.is_divider = $wire.form.is_divider }"
             x-on:reseted-form.window="
                 isDisabledDivider = $event.detail.is_divider;
             "
