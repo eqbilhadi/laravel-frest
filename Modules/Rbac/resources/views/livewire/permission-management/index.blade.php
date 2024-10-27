@@ -35,7 +35,7 @@
                             <td class="text-center">
                                 {{ $permissions->firstItem() + $loop->index }}
                             </td>
-                            <td class="fw-semibold">
+                            <td>
                                 {{ $permission->name }}
                             </td>
                             <td>
