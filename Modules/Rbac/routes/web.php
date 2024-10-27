@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'rbac', 'as' => 'rbac.'], fu
     */
     Route::group(['prefix' => 'role-management', 'as' => 'role.'], function () {
         Route::get('/', [RoleManagementController::class, 'index'])->name('index');
+        Route::get('create', [RoleManagementController::class, 'create'])->name('create');
+        Route::get('edit/{comRole}', [RoleManagementController::class, 'edit'])->name('edit');
     });
     
     /*
