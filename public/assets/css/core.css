@@ -6707,7 +6707,7 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
   font-weight: bold;
 }
 .table:not(.table-dark) thead:not(.table-dark) th {
-  color: #516377;
+  color: #000000;
 }
 
 .table-border-bottom-0 tr:last-child td,
