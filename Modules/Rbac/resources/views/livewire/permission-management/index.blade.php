@@ -20,8 +20,8 @@
             </div>
         </div>
         <div class="table-responsive text-nowrap">
-            <table class="table table-striped border-top table-sm">
-                <thead class="table-dark">
+            <table class="table table-hover table-striped border-top table-sm">
+                <thead class="table-light">
                     <tr>
                         <th class="text-center" style="width: 3%;">No</th>
                         <th>Permissions Name</th>

@@ -17,8 +17,8 @@
             </div>
         </div>
         <div class="table-responsive text-nowrap">
-            <table class="table table-striped table-sm border-top">
-                <thead class="table-dark">
+            <table class="table table-hover table-striped border-top table-sm">
+                <thead class="table-light">
                     <tr>
                         <th>Navigation Label Name</th>
                         <th>Controller Name</th>
