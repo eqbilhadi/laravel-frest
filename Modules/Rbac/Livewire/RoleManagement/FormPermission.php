@@ -43,9 +43,10 @@ class FormPermission extends Component
     public function save()
     {
         try {
-            $this->comRole->permissions()->sync($this->permissionAccess);
+            $permissionNames = ComPermission::whereIn('id', $this->permissionAccess)->pluck('name')->toArray();
+            $this->comRole->syncPermissions($permissionNames);
             dispatch(new ForgetCacheMenu());
-            
+
             toastr()->closeButton(true)->addSuccess($this->actionForm . ' permission access to role successfully');
             return $this->redirect(route('rbac.role.index'), navigate: true);
         } catch (\Exception $err) {
