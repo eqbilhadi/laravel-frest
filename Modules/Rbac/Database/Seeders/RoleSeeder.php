@@ -12,9 +12,9 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::firstOrCreate(['name' => 'developer', 'color' => '#465aeb']);
-        Role::firstOrCreate(['name' => 'superadmin', 'color' => '#e01814']);
-        Role::firstOrCreate(['name' => 'admin', 'color' => '#f79d16']);
-        Role::firstOrCreate(['name' => 'user', 'color' => '#635744']);
+        Role::firstOrCreate(['name' => 'developer', 'color' => '#465aeb', 'icon' => 'fa-solid fa-laptop-code']);
+        Role::firstOrCreate(['name' => 'superadmin', 'color' => '#e01814', 'icon' => 'fa-solid fa-user-crown']);
+        Role::firstOrCreate(['name' => 'admin', 'color' => '#f79d16', 'icon' => 'fa-solid fa-user-tie']);
+        Role::firstOrCreate(['name' => 'user', 'color' => '#635744', 'icon' => 'fa-solid fa-user']);
     }
 }

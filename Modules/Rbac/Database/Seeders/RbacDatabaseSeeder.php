@@ -13,7 +13,8 @@ class RbacDatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
-            MenuSeeder::class
+            MenuSeeder::class,
+            PermissionSeeder::class
         ]);
     }
 }
