@@ -65,7 +65,15 @@ class ComUser extends Authenticatable
                     return asset($this->avatar);
                 }
         
-                return asset('assets/images/avatars/3.png');
+                if ($this->avatar == null && $this->gender == "l") {
+                    return asset('assets/images/avatars/blank-avatar-man.jpg');
+                }
+                
+                if ($this->avatar == null && $this->gender == "p") {
+                    return asset('assets/images/avatars/blank-avatar-woman.jpg');
+                }
+                
+                return asset('assets/images/avatars/blank-avatar.png');
             }
         );
     }
@@ -80,7 +88,7 @@ class ComUser extends Authenticatable
     protected function mainRole(): Attribute
     {
         return Attribute::make(
-            get: fn() => Str::ucfirst($this->roles()->first()->name)
+            get: fn() => Str::ucfirst($this->roles()->first()?->name)
         );
     }
 }
