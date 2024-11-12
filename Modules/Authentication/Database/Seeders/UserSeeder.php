@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
             'password' => Hash::make($password),
+            'gender' => fake()->randomElement(['l', 'p'])
         ]);
 
         $user->assignRole($role);
