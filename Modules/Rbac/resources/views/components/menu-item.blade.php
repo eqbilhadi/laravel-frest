@@ -40,36 +40,44 @@
             @endif
         </button>
     </td>
-    <td class="text-end">
-        <div class="d-flex flex-row justify-content-end align-items-center gap-2">
-            <div class="d-flex flex-column">
-                @unless ($loop->first)
-                    <button data-bs-toggle="tooltip" title="Sort Up" class="btn btn-icon btn-sm" wire:click="changeOrder('{{ $menu->id }}','up')">
-                        <span wire:loading.remove wire:target="changeOrder('{{ $menu->id }}','up')">
-                            <i class="fa-solid fa-chevron-up"></i>
-                        </span>
-                        <span wire:loading wire:target="changeOrder('{{ $menu->id }}','up')">
-                            <i class="fa-solid fa-spinner-third fa-spin" style="--fa-animation-duration: 0.7s;"></i>
-                        </span>
+    @canany(['sort-navigation', 'edit-navigation', 'delete-navigation'])
+        <td class="text-end">
+            <div class="d-flex flex-row justify-content-end align-items-center gap-2">
+                @can('sort-navigation')
+                    <div class="d-flex flex-column">
+                        @unless ($loop->first)
+                            <button data-bs-toggle="tooltip" title="Sort Up" class="btn btn-icon btn-sm" wire:click="changeOrder('{{ $menu->id }}','up')">
+                                <span wire:loading.remove wire:target="changeOrder('{{ $menu->id }}','up')">
+                                    <i class="fa-solid fa-chevron-up"></i>
+                                </span>
+                                <span wire:loading wire:target="changeOrder('{{ $menu->id }}','up')">
+                                    <i class="fa-solid fa-spinner-third fa-spin" style="--fa-animation-duration: 0.7s;"></i>
+                                </span>
+                            </button>
+                        @endunless
+                        @unless ($loop->last)
+                            <button data-bs-toggle="tooltip" title="Sort Down" class="btn btn-icon btn-sm" wire:click="changeOrder('{{ $menu->id }}','down')">
+                                <span wire:loading.remove wire:target="changeOrder('{{ $menu->id }}','down')">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                                <span wire:loading wire:target="changeOrder('{{ $menu->id }}','down')">
+                                    <i class="fa-solid fa-spinner-third fa-spin" style="--fa-animation-duration: 0.7s;"></i>
+                                </span>
+                            </button>
+                        @endunless
+                    </div>
+                @endcan
+                @can('edit-navigation')
+                    <a href="{{ route('rbac.nav.edit', $menu->id) }}" class="btn btn-sm btn-warning" wire:navigate>Edit</a>
+                @endcan
+                @can('delete-navigation')
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-delete-id={{ "$menu->id" }}>
+                        Delete
                     </button>
-                @endunless
-                @unless ($loop->last)
-                    <button data-bs-toggle="tooltip" title="Sort Down" class="btn btn-icon btn-sm" wire:click="changeOrder('{{ $menu->id }}','down')">
-                        <span wire:loading.remove wire:target="changeOrder('{{ $menu->id }}','down')">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </span>
-                        <span wire:loading wire:target="changeOrder('{{ $menu->id }}','down')">
-                            <i class="fa-solid fa-spinner-third fa-spin" style="--fa-animation-duration: 0.7s;"></i>
-                        </span>
-                    </button>
-                @endunless
+                @endcan
             </div>
-            <a href="{{ route('rbac.nav.edit', $menu->id) }}" class="btn btn-sm btn-warning" wire:navigate>Edit</a>
-            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-delete-id={{ "$menu->id" }}>
-                Delete
-            </button>
-        </div>
-    </td>
+        </td>
+    @endcanany
 </tr>
 @isset($menu->children)
     @foreach ($menu->children as $child)
