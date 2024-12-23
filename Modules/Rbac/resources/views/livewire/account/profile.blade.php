@@ -13,6 +13,7 @@
                 <div class="button-wrapper">
                     <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                     <span class="d-none d-sm-block">Upload new photo</span>
+                    <span class="d-block d-sm-none"><i class="fa-solid fa-upload"></i></span>
                     <i class="bx bx-upload d-block d-sm-none"></i>
                     <input
                         type="file"
@@ -22,9 +23,10 @@
                         wire:model='avatar'
                     />
                     </label>
-                    <button type="button" class="btn btn-label-secondary account-image-reset mb-4" data-bs-toggle="modal" data-bs-target="#chooseAvatarModal">
+                    <button type="button" class="btn btn-label-primary account-image-reset mb-4" data-bs-toggle="modal" data-bs-target="#chooseAvatarModal">
                         <i class="bx bx-reset d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Choose avatar</span>
+                        <span class="d-block d-sm-none"><i class="fa-duotone fa-image-polaroid-user"></i></span>
                     </button>
 
                     <p class="mb-0" x-show="!isUploading">Allowed JPG, GIF or PNG. Max size of 800K</p>

@@ -3,7 +3,7 @@
         <h5 class="card-header mb-4">Change Password</h5>
         <form wire:submit="updatePassword">
             <div class="row">
-                <div class="mb-3 col-md-6 offset-3 form-password-toggle">
+                <div class="mb-3 col-md-6 offset-md-3 col-12 form-password-toggle">
                     <label class="form-label" for="currentPassword">
                         Current Password
                     </label>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="mb-3 col-md-6 offset-3 form-password-toggle">
+                <div class="mb-3 col-md-6 offset-md-3 col-12 form-password-toggle">
                     <label class="form-label" for="newPassword">
                         New Password
                     </label>
@@ -48,7 +48,7 @@
                     @enderror
                 </div>
     
-                <div class="mb-3 col-md-6 offset-3 form-password-toggle">
+                <div class="mb-3 col-md-6 offset-md-3 col-12 form-password-toggle">
                     <label class="form-label" for="confirmPassword">
                         Confirm New Password
                     </label>
@@ -69,7 +69,7 @@
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-                <div class="col-6 offset-3 mt-1 d-flex align-items-center">
+                <div class="mb-3 col-md-6 offset-md-3 col-12 mt-1 d-flex align-items-center">
                     <button type="submit" class="btn btn-primary me-2">
                         <span wire:loading.remove wire:target='updatePassword'>
                             <i class="fa-solid fa-floppy-disk me-1"></i>
