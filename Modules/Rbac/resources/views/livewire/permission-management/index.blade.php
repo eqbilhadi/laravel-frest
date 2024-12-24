@@ -90,6 +90,6 @@
             Livewire.on("close-modal", (event) => {
                 $("#permissionModalForm").modal("hide");
             });
-        });
+        }, { once: true });
     </script>
 </div>
