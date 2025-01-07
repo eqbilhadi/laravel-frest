@@ -27,8 +27,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'rbac', 'as' => 'rbac.'], fu
     */
     Route::group(['prefix' => 'navigation-management', 'as' => 'nav.'], function () {
         Route::get('/', [NavigationManagementController::class, 'index'])->name('index');
-        Route::get('create', [NavigationManagementController::class, 'create'])->name('create');
-        Route::get('edit/{comMenu}', [NavigationManagementController::class, 'edit'])->name('edit');
+        Route::get('create', [NavigationManagementController::class, 'create'])->name('create')->middleware('can:create-navigation');
+        Route::get('edit/{comMenu}', [NavigationManagementController::class, 'edit'])->name('edit')->middleware('can:edit-navigation');
     });
     
     /*
@@ -58,5 +58,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'rbac', 'as' => 'rbac.'], fu
     */
     Route::group(['prefix' => 'user-management', 'as' => 'user.'], function () {
         Route::get('/', [UserManagementController::class, 'index'])->name('index');
+        Route::get('create', [UserManagementController::class, 'create'])->name('create');
+        Route::get('edit/{comUser}', [UserManagementController::class, 'edit'])->name('edit');
     });
 });
