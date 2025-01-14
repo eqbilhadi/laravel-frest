@@ -7,15 +7,17 @@
                     <h6 class="card-subtitle text-muted">List of permission</h6>
                 </div>
                 <div class="col-6 text-end">
-                    <button
-                        class="btn btn-primary"
-                        x-on:click="$dispatch('open-permission-form')"
-                        data-bs-toggle="modal"
-                        data-bs-target="#permissionModalForm"
-                    >
-                        <i class="fa-regular fa-circle-plus fa-fw me-sm-1"></i>
-                        <span class="d-none d-sm-block"> Add Permissions </span>
-                    </button>
+                    @can('create-permission')
+                        <button
+                            class="btn btn-primary"
+                            x-on:click="$dispatch('open-permission-form')"
+                            data-bs-toggle="modal"
+                            data-bs-target="#permissionModalForm"
+                        >
+                            <i class="fa-regular fa-circle-plus fa-fw me-sm-1"></i>
+                            <span class="d-none d-sm-block"> Add Permissions </span>
+                        </button>
+                    @endcan
                 </div>
             </div>
         </div>
@@ -26,7 +28,9 @@
                         <th class="text-center" style="width: 3%;">No</th>
                         <th>Permissions Name</th>
                         <th>Assigned To</th>
-                        <th class="text-end">Actions</th>
+                        @canany(['edit-permission', 'delete-permission'])
+                            <th class="text-end">Actions</th>
+                        @endcanany
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -48,26 +52,32 @@
                                     </span>
                                 @endforeach
                             </td>
-                            <td class="text-end">
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-warning"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#permissionModalForm"
-                                    x-on:click="$dispatch('open-permission-form', { comPermission: {{ $permission }} })"
-                                >
-                                    Edit
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal"
-                                    data-delete-id={{ "$permission->id" }}
-                                >
-                                    Delete
-                                </button>
-                            </td>
+                            @canany(['edit-permission', 'delete-permission'])
+                                <td class="text-end">
+                                    @can('edit-permission')
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-warning"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#permissionModalForm"
+                                            x-on:click="$dispatch('open-permission-form', { comPermission: {{ $permission }} })"
+                                        >
+                                            Edit
+                                        </button>
+                                    @endcan
+                                    @can('delete-permission')
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-danger"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal"
+                                            data-delete-id={{ "$permission->id" }}
+                                        >
+                                            Delete
+                                        </button>
+                                    @endcan
+                                </td>
+                            @endcanany
                         </tr>
                     @empty
                         <tr>
