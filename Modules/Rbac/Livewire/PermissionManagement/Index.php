@@ -20,7 +20,7 @@ class Index extends Component
     #[Computed]
     public function permissionLists()
     {
-        return ComPermission::with('roles')->latest()->paginate(10);
+        return ComPermission::with('roles')->orderBy('name', 'asc')->paginate(10);
     }
 
     public function delete($id)
