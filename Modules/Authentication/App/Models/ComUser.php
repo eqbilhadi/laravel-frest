@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Str;
+
 class ComUser extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, UuidTrait, HasRoles;
@@ -64,20 +65,20 @@ class ComUser extends Authenticatable
                 if ($this->avatar && file_exists($this->avatar)) {
                     return asset($this->avatar);
                 }
-        
+
                 if ($this->avatar == null && $this->gender == "l") {
                     return asset('assets/images/avatars/blank-avatar-man.jpg');
                 }
-                
+
                 if ($this->avatar == null && $this->gender == "p") {
                     return asset('assets/images/avatars/blank-avatar-woman.jpg');
                 }
-                
+
                 return asset('assets/images/avatars/blank-avatar.png');
             }
         );
     }
-    
+
     protected function fullname(): Attribute
     {
         return Attribute::make(
@@ -89,6 +90,23 @@ class ComUser extends Authenticatable
     {
         return Attribute::make(
             get: fn() => Str::ucfirst($this->roles()->first()?->name)
+        );
+    }
+
+    public function isProfileComplete(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->username &&
+                $this->email &&
+                $this->password &&
+                $this->firstname &&
+                $this->lastname &&
+                $this->birthplace &&
+                $this->birthdate &&
+                $this->gender &&
+                $this->avatar &&
+                $this->phone &&
+                $this->address
         );
     }
 }
