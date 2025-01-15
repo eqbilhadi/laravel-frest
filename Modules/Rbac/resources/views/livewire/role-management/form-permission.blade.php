@@ -1,4 +1,25 @@
 <div>
+    <style>
+        .table-responsive::-webkit-scrollbar {
+            width: 0px;
+        }
+        
+        .table-responsive:hover::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .table-responsive::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background: #888; 
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
     <form wire:submit="save">
         <div id="account-details-vertical" class="row justify-content-center">
             <div class="col-lg-8 col-12">
@@ -7,7 +28,7 @@
                     <small>Enter Your Navigation Access for Role.</small>
                 </div>
                 <div class="row g-3">
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="height: 440px; overflow-y: auto;">
                         <table class="table table-striped table-sm border-top">
                             <thead>
                                 <th>Navigation Name</th>
