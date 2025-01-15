@@ -21,7 +21,7 @@ class FormPermission extends Component
     public function permissions()
     {
         return ComPermission::query()
-            ->latest()
+            ->orderBy('name', 'asc')
             ->get();
     }
 
