@@ -32,18 +32,20 @@
                 <i class="fa-solid fa-spinner-third fa-spin" style="--fa-animation-duration: 0.7s;"></i>
             </span>
         </span>
-        <button class="btn btn-icon btn-sm" wire:click="changeStatus('{{ $menu->id }}')">
-            @if ($menu->is_active == 1)
-                <i class="fa-sharp fa-solid fa-toggle-on fa-rotate-270"></i>
-            @else
-                <i class="fa-sharp fa-solid fa-toggle-off fa-rotate-270"></i>
-            @endif
-        </button>
+        @can('navigation-status')
+            <button class="btn btn-icon btn-sm" wire:click="changeStatus('{{ $menu->id }}')">
+                @if ($menu->is_active == 1)
+                    <i class="fa-sharp fa-solid fa-toggle-on fa-rotate-270"></i>
+                @else
+                    <i class="fa-sharp fa-solid fa-toggle-off fa-rotate-270"></i>
+                @endif
+            </button>
+        @endcan
     </td>
-    @canany(['sort-navigation', 'edit-navigation', 'delete-navigation'])
+    @canany(['navigation-sort', 'navigation-edit', 'navigation-delete'])
         <td class="text-end">
             <div class="d-flex flex-row justify-content-end align-items-center gap-2">
-                @can('sort-navigation')
+                @can('navigation-sort')
                     <div class="d-flex flex-column">
                         @unless ($loop->first)
                             <button data-bs-toggle="tooltip" title="Sort Up" class="btn btn-icon btn-sm" wire:click="changeOrder('{{ $menu->id }}','up')">
@@ -67,10 +69,10 @@
                         @endunless
                     </div>
                 @endcan
-                @can('edit-navigation')
+                @can('navigation-edit')
                     <a href="{{ route('rbac.nav.edit', $menu->id) }}" class="btn btn-sm btn-warning" wire:navigate>Edit</a>
                 @endcan
-                @can('delete-navigation')
+                @can('navigation-delete')
                     <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-delete-id={{ "$menu->id" }}>
                         Delete
                     </button>

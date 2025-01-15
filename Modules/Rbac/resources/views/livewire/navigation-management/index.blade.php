@@ -6,7 +6,7 @@
                     <h5 class="card-title">Navigation Table</h5>
                     <h6 class="card-subtitle text-muted">List of navigation menu</h6>
                 </div>
-                @can('create-navigation')
+                @can('navigation-create')
                     <div class="col-6 text-end">
                         <a href="{{ route('rbac.nav.create') }}" class="btn btn-primary" wire:navigate>
                             <i class="fa-regular fa-circle-plus fa-fw me-sm-1"></i>
@@ -25,7 +25,7 @@
                         <th>Navigation Label Name</th>
                         <th>Controller Name</th>
                         <th class="text-center">Status</th>
-                        @canany(['sort-navigation', 'edit-navigation', 'delete-navigation'])
+                        @canany(['navigation-sort', 'navigation-edit', 'navigation-delete'])
                             <th class="text-end">Actions</th>
                         @endcanany
                     </tr>

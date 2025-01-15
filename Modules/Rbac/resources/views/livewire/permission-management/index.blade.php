@@ -7,7 +7,7 @@
                     <h6 class="card-subtitle text-muted">List of permission</h6>
                 </div>
                 <div class="col-6 text-end">
-                    @can('create-permission')
+                    @can('permission-create')
                         <button
                             class="btn btn-primary"
                             x-on:click="$dispatch('open-permission-form')"
@@ -28,7 +28,7 @@
                         <th class="text-center" style="width: 3%;">No</th>
                         <th>Permissions Name</th>
                         <th>Assigned To</th>
-                        @canany(['edit-permission', 'delete-permission'])
+                        @canany(['permission-edit', 'permission-delete'])
                             <th class="text-end">Actions</th>
                         @endcanany
                     </tr>
@@ -52,9 +52,9 @@
                                     </span>
                                 @endforeach
                             </td>
-                            @canany(['edit-permission', 'delete-permission'])
+                            @canany(['permission-edit', 'permission-delete'])
                                 <td class="text-end">
-                                    @can('edit-permission')
+                                    @can('permission-edit')
                                         <button
                                             type="button"
                                             class="btn btn-sm btn-warning"
@@ -65,7 +65,7 @@
                                             Edit
                                         </button>
                                     @endcan
-                                    @can('delete-permission')
+                                    @can('permission-delete')
                                         <button
                                             type="button"
                                             class="btn btn-sm btn-danger"

@@ -27,8 +27,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'rbac', 'as' => 'rbac.'], fu
     */
     Route::group(['prefix' => 'navigation-management', 'as' => 'nav.'], function () {
         Route::get('/', [NavigationManagementController::class, 'index'])->name('index');
-        Route::get('create', [NavigationManagementController::class, 'create'])->name('create')->middleware('can:create-navigation');
-        Route::get('edit/{comMenu}', [NavigationManagementController::class, 'edit'])->name('edit')->middleware('can:edit-navigation');
+        Route::get('create', [NavigationManagementController::class, 'create'])->name('create')->middleware('can:navigation-create');
+        Route::get('edit/{comMenu}', [NavigationManagementController::class, 'edit'])->name('edit')->middleware('can:navigation-edit');
     });
     
     /*
@@ -47,8 +47,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'rbac', 'as' => 'rbac.'], fu
     */
     Route::group(['prefix' => 'role-management', 'as' => 'role.'], function () {
         Route::get('/', [RoleManagementController::class, 'index'])->name('index');
-        Route::get('create', [RoleManagementController::class, 'create'])->name('create');
-        Route::get('edit/{comRole}', [RoleManagementController::class, 'edit'])->name('edit');
+        Route::get('create', [RoleManagementController::class, 'create'])->name('create')->middleware('can:role-create');
+        Route::get('edit/{comRole}', [RoleManagementController::class, 'edit'])->name('edit')->middleware('can:role-edit');
     });
     
     /*
@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'rbac', 'as' => 'rbac.'], fu
     */
     Route::group(['prefix' => 'user-management', 'as' => 'user.'], function () {
         Route::get('/', [UserManagementController::class, 'index'])->name('index');
-        Route::get('create', [UserManagementController::class, 'create'])->name('create');
-        Route::get('edit/{comUser}', [UserManagementController::class, 'edit'])->name('edit');
+        Route::get('create', [UserManagementController::class, 'create'])->name('create')->middleware('can:user-create');
+        Route::get('edit/{comUser}', [UserManagementController::class, 'edit'])->name('edit')->middleware('can:user-edit');
     });
 });
