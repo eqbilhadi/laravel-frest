@@ -6,16 +6,18 @@
                     <h5 class="card-title">Users Table</h5>
                     <h6 class="card-subtitle text-muted">List of user</h6>
                 </div>
-                <div class="col-6 text-end">
-                    <a
-                        href="{{ route('rbac.user.create') }}"
-                        wire:navigate
-                        class="btn btn-primary"
-                    >
-                        <i class="fa-regular fa-circle-plus fa-fw me-sm-1"></i>
-                        <span class="d-none d-sm-block"> Add User </span>
-                    </a>
-                </div>
+                @can('user-create')
+                    <div class="col-6 text-end">
+                        <a
+                            href="{{ route('rbac.user.create') }}"
+                            wire:navigate
+                            class="btn btn-primary"
+                        >
+                            <i class="fa-regular fa-circle-plus fa-fw me-sm-1"></i>
+                            <span class="d-none d-sm-block"> Add User </span>
+                        </a>
+                    </div>
+                @endcan
             </div>
         </div>
         <div class="table-responsive text-nowrap">
@@ -27,7 +29,9 @@
                         <th>Account Info</th>
                         <th class="text-center">Gender</th>
                         <th class="text-center">Status</th>
-                        <th class="text-end">Actions</th>
+                        @canany('user-edit', 'user-delete')
+                            <th class="text-end">Actions</th>
+                        @endcanany
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -84,24 +88,30 @@
                                     </span>
                                 </span>
                             </td>
-                            <td class="text-end">
-                                <a
-                                    href="{{ route('rbac.user.edit', $user->id) }}"
-                                    class="btn btn-sm btn-warning"
-                                    wire:navigate
-                                >
-                                    Edit
-                                </a>
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal"
-                                    data-delete-id={{ "$user->id" }}
-                                >
-                                    Delete
-                                </button>
-                            </td>
+                            @canany('user-edit', 'user-delete')
+                                <td class="text-end">
+                                    @can('user-edit')
+                                        <a
+                                            href="{{ route('rbac.user.edit', $user->id) }}"
+                                            class="btn btn-sm btn-warning"
+                                            wire:navigate
+                                        >
+                                            Edit
+                                        </a>
+                                    @endcan
+                                    @can('user-delete')
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-danger"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal"
+                                            data-delete-id={{ "$user->id" }}
+                                        >
+                                            Delete
+                                        </button>
+                                    @endcan
+                                </td>
+                            @endcanany
                         </tr>
                     @empty
                         <tr>
