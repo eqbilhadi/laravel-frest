@@ -20,6 +20,7 @@
                 @endcan
             </div>
         </div>
+        @dump(auth()->user()->getAllPermissions()->pluck('name'))
         <div class="table-responsive text-nowrap">
             <table class="table table-hover table-striped border-top table-sm">
                 <thead class="table-light">
@@ -29,7 +30,7 @@
                         <th>Account Info</th>
                         <th class="text-center">Gender</th>
                         <th class="text-center">Status</th>
-                        @canany('user-edit', 'user-delete')
+                        @canany(['user-edit', 'user-delete'])
                             <th class="text-end">Actions</th>
                         @endcanany
                     </tr>
@@ -88,7 +89,7 @@
                                     </span>
                                 </span>
                             </td>
-                            @canany('user-edit', 'user-delete')
+                            @canany(['user-edit', 'user-delete'])
                                 <td class="text-end">
                                     @can('user-edit')
                                         <a
