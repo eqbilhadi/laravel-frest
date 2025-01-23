@@ -20,7 +20,6 @@
                 @endcan
             </div>
         </div>
-        @dump(auth()->user()->getAllPermissions()->pluck('name'))
         <div class="table-responsive text-nowrap">
             <table class="table table-hover table-striped border-top table-sm">
                 <thead class="table-light">
